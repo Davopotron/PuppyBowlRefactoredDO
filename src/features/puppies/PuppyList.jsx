@@ -3,11 +3,11 @@
  * Shows a list of puppies in the roster.
  * Users can select a puppy to see more information about it.
  */
-import { useGetPuppiesQuery } from "./puppySlice";
 
+import { useGetPuppiesQuery } from "./puppySlice";
 export default function PuppyList({ setSelectedPuppyId }) {
   // TODO: Get data from getPuppies query
-  const { data: puppies = [], isLoading, error } = useGetPuppiesQuery();
+  const { data: puppies = [], isLoading } = useGetPuppiesQuery();
 
   if (isLoading) {
     return <p>Loading puppies...</p>;
@@ -17,7 +17,7 @@ export default function PuppyList({ setSelectedPuppyId }) {
     return <p>{error.message}</p>;
   }
 
-  if (!recipes.length) {
+  if (!players.length) {
     return <p>There are no puppies.</p>;
   }
 
@@ -28,7 +28,7 @@ export default function PuppyList({ setSelectedPuppyId }) {
       <h2>Roster</h2>
       <ul className="puppies">
         {isLoading && <li>Loading puppies...</li>}
-        {puppies.map((p) => (
+        {players.map((p) => (
           <li key={p.id}>
             <h3>
               {p.name} #{p.id}
