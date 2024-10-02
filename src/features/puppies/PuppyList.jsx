@@ -29,7 +29,7 @@ export default function PuppyList({ setSelectedPuppyId }) {
       <h2>Roster</h2>
       <ul className="puppies">
         {isLoading && <li>Loading puppies...</li>}
-        {players.map((p) => (
+        {puppies.map((p) => (
           <li key={p.id}>
             <h3>
               {p.name} #{p.id}
