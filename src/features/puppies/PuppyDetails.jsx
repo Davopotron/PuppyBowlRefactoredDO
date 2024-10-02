@@ -3,13 +3,21 @@
  * Shows comprehensive information about the selected puppy, if there is one.
  * Also provides a button for users to remove the selected puppy from the roster.
  */
+
+import { useDeletePuppyMutation, useGetPuppyQuery } from "./puppySlice";
+
 export default function PuppyDetails({ selectedPuppyId, setSelectedPuppyId }) {
+  
   // TODO: Grab data from the `getPuppy` query
 
   // TODO: Use the `deletePuppy` mutation to remove a puppy when the button is clicked
+  
+  const { data: puppy, isLoading } = useGetPuppyQuery(selectedPuppyId);
+  const [deletePuppy] = useDeletePuppyMutation();
 
   function removePuppy(id) {
     setSelectedPuppyId();
+    deletePuppy(id);
   }
 
   // There are 3 possibilities:
